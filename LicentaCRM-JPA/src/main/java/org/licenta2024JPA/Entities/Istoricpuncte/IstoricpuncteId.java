@@ -5,6 +5,7 @@ import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;
+import org.licenta2024JPA.Entities.Client.Client;
 
 import java.util.Objects;
 
@@ -18,6 +19,14 @@ public class IstoricpuncteId implements java.io.Serializable {
 
     @Column(name = "codachizite", nullable = false)
     private Integer codachizite;
+
+    public IstoricpuncteId(String client, Integer codachizite) {
+        this.codclient = client;
+        this.codachizite = codachizite;
+    }
+
+    public IstoricpuncteId() {
+    }
 
     @Override
     public boolean equals(Object o) {

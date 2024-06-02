@@ -1,4 +1,4 @@
-package org.licenta2024JPA.Entities;
+package org.licenta2024JPA.Entities.Campanie;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -37,6 +37,7 @@ public class Campanie extends AbstractEntity {
     @Column(name = "datastop")
     private LocalDate datastop;
 
-    @Column(name = "tip")
-    private String tip;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tip", nullable = false)
+    private TipCampanie tip;
 }

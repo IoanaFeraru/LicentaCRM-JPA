@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.licenta2024JPA.Entities.Achizitie;
-import org.licenta2024JPA.Entities.Adresa.Judet;
-import org.licenta2024JPA.Entities.Campanie;
+import org.licenta2024JPA.Entities.Campanie.Campanie;
 import org.licenta2024JPA.Entities.Linieoferta.Linieoferta;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
 

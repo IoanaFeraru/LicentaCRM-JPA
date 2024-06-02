@@ -4,9 +4,6 @@ import Test.Inserari.*;
 
 /*
 ToDO
-        TestInserareCampanii
-        TestInserareAchizitii *
-        TestInserareLiniiAchiztii *
         TestInserareIstoricPuncte *
         TestInserareFeedback + repoFeedback onlyIfBought
 */
@@ -25,6 +22,8 @@ public class TestInsertii {
         TestInserareLiniiTagClienti testInserareLiniiTagClienti = new TestInserareLiniiTagClienti();
         TestInserareWishList testInserareWishList = new TestInserareWishList();
         TestInserareComunicate testInserareComunicate = new TestInserareComunicate();
+        TestInserareCampanii testInserareCampanii = new TestInserareCampanii();
+        //TestInserareAchizitii testInserareAchizitii = new TestInserareAchizitii();
 
         try {
             testInserareTagProduse.insertTags(10);
@@ -38,6 +37,8 @@ public class TestInsertii {
             testInserareLiniiTagClienti.insertLiniiTagClienti();
             testInserareWishList.insertWishList();
             testInserareComunicate.insertComunicate();
+            testInserareCampanii.insertCampanii();
+            //testInserareAchizitii.insertAchizitii();
         } finally {
             testInserareClienti.closeEm();
             testInserareTagProduse.closeEm();
@@ -49,6 +50,8 @@ public class TestInsertii {
             testInserareSegmente.closeEm();
             testInserareLiniiTagClienti.closeEm();
             testInserareWishList.closeEm();
+            testInserareComunicate.closeEm();
+            //testInserareCampanii.closeEm();
         }
     }
 }

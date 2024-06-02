@@ -57,8 +57,6 @@ public class TestInserareLiniiTagClienti {
         } catch (Exception e) {
             linietagclientiRepository.rollbackTransaction();
             throw e;
-        } finally {
-            linietagclientiRepository.closeEntityManager();
         }
     }
 

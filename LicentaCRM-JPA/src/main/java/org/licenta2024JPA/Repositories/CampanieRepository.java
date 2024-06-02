@@ -1,6 +1,6 @@
 package org.licenta2024JPA.Repositories;
 
-import org.licenta2024JPA.Entities.Campanie;
+import org.licenta2024JPA.Entities.Campanie.Campanie;
 import org.licenta2024JPA.Metamodels.AbstractRepository;
 
 public class CampanieRepository extends AbstractRepository<Campanie> {

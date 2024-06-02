@@ -16,30 +16,11 @@ public class IstoricpuncteRepository extends AbstractRepository<Istoricpuncte> {
         return getEm().find(Istoricpuncte.class, id);
     }
 
-    public void addIstoricpuncte(Istoricpuncte istoricpuncte) {
-        try {
-            beginTransaction();
-
-            // Automatically set codClient from related Achizitie
-            Achizitie achizitie = istoricpuncte.getCodachizitie();
-            Client client = achizitie.getCodclient();
-            istoricpuncte.setCodclient(client);
-
-            // Calculate valoarepuncte based on totalSuma and plataPuncte from related Achizitie
-            Integer valoarepuncte = achizitie.getTotalSuma().intValue() - achizitie.getPlatapuncte();
-            istoricpuncte.setValoarepuncte(valoarepuncte);
-
-            // Update client's puncteloialitate
-            client.setPuncteloialitate(client.getPuncteloialitate() + valoarepuncte);
-
-            // Persist the changes
-            getEm().merge(client);
-            create(istoricpuncte);
-
-            commitTransaction();
-        } catch (Exception e) {
-            rollbackTransaction();
-            throw e;
+    public Integer calculateValoarepuncte(Achizitie achizitie) {
+        if (achizitie.getPlatapuncte() != null) {
+            return achizitie.getTotalSuma().intValue() - achizitie.getPlatapuncte();
+        } else {
+            return achizitie.getTotalSuma().intValue();
         }
     }
 

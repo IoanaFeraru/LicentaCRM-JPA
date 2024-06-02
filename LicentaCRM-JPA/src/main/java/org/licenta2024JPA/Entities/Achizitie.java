@@ -30,11 +30,11 @@ public class Achizitie extends AbstractEntity {
     @Column(name = "status", nullable = false)
     private String status;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "codoferta", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "codoferta")
     private Oferta codoferta;
 
-    @Column(name = "platapuncte", nullable = false)
+    @Column(name = "platapuncte")
     private Integer platapuncte;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

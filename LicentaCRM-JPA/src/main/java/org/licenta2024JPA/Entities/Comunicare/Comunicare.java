@@ -3,7 +3,7 @@ package org.licenta2024JPA.Entities.Comunicare;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.licenta2024JPA.Entities.Campanie;
+import org.licenta2024JPA.Entities.Campanie.Campanie;
 import org.licenta2024JPA.Entities.Client.Client;
 import org.licenta2024JPA.Entities.Segment;
 import org.licenta2024JPA.Metamodels.AbstractEntity;

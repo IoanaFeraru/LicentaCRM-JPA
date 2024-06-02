@@ -19,6 +19,14 @@ public class LinieachizitieId implements java.io.Serializable {
     @Column(name = "codprodus", nullable = false)
     private String codprodus;
 
+    public LinieachizitieId(Integer codachizitie, String codprodus) {
+        this.codachizitie = codachizitie;
+        this.codprodus = codprodus;
+    }
+
+    public LinieachizitieId() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

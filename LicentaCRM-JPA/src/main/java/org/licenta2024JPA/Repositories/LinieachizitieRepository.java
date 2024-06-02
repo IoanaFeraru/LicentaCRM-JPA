@@ -6,6 +6,9 @@ import org.licenta2024JPA.Entities.Achizitie;
 import org.licenta2024JPA.Metamodels.AbstractRepository;
 import org.licenta2024JPA.Entities.Oferta.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class LinieachizitieRepository extends AbstractRepository<Linieachizitie> {
     @Override
     protected Class<Linieachizitie> getEntityClass() {
@@ -23,33 +26,39 @@ public class LinieachizitieRepository extends AbstractRepository<Linieachizitie>
 
             // Update totalSuma in Achizitie
             Achizitie achizitie = linieachizitie.getCodachizitie();
-            Double currentTotal = achizitie.getTotalSuma();
+            BigDecimal currentTotal = BigDecimal.valueOf(achizitie.getTotalSuma());
 
             // Calculate the price of the current line item
-            Double lineItemTotal = linieachizitie.getCantitate() * linieachizitie.getCodprodus().getPret();
+            BigDecimal lineItemTotal = BigDecimal.valueOf(linieachizitie.getCantitate())
+                    .multiply(BigDecimal.valueOf(linieachizitie.getCodprodus().getPret()));
 
             // Check for any associated offers and apply them
-            Oferta oferta = achizitie.getCodoferta();
-            if (oferta != null && oferta.getStatus() == Status.ACTIVE) {
-                switch (oferta.getTipreducere()) {
-                    case PRODUS:
-                        // Apply product discount (free product)
-                        lineItemTotal = 0.00;
-                        break;
-                    case PROCENT:
-                        // Apply percentage discount
-                        lineItemTotal *= (1 - oferta.getValoarereducere() / 100);
-                        break;
-                    default:
-                        break;
+            if (achizitie.getCodoferta() != null) {
+                Oferta oferta = achizitie.getCodoferta();
+                if (oferta.getStatus() == Status.ACTIVE) {
+                    switch (oferta.getTipreducere()) {
+                        case PRODUS:
+                            // Apply product discount (free product)
+                            lineItemTotal = BigDecimal.ZERO;
+                            break;
+                        case PROCENT:
+                            // Apply percentage discount
+                            lineItemTotal = lineItemTotal.multiply(BigDecimal.valueOf(1 - oferta.getValoarereducere() / 100));
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    System.out.println("Offer not available anymore");
                 }
-            }else if(oferta.getStatus() == Status.NOTACTIVE){
-                System.out.println("Offer not available anymore");
             }
 
+            // Round lineItemTotal to 2 decimal places
+            lineItemTotal = lineItemTotal.setScale(2, RoundingMode.HALF_UP);
+
             // Update the total suma of the achizitie
-            currentTotal += lineItemTotal;
-            achizitie.setTotalSuma(currentTotal);
+            currentTotal = currentTotal.add(lineItemTotal).setScale(2, RoundingMode.HALF_UP);
+            achizitie.setTotalSuma(currentTotal.doubleValue());
 
             getEm().merge(achizitie);
 
