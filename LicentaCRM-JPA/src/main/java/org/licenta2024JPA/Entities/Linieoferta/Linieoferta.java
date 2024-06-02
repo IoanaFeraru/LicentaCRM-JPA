@@ -3,7 +3,7 @@ package org.licenta2024JPA.Entities.Linieoferta;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.licenta2024JPA.Entities.Oferta;
+import org.licenta2024JPA.Entities.Oferta.Oferta;
 import org.licenta2024JPA.Entities.Produs;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
 
@@ -24,4 +24,10 @@ public class Linieoferta extends AbstractEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "codprodus", nullable = false)
     private Produs codprodus;
+
+    /*
+    maybe the product should be unique to have only one points price
+    (CONS: some offers are no longer available)
+    - issue solvable in frontend
+     */
 }

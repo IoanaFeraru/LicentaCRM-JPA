@@ -1,8 +1,11 @@
-package org.licenta2024JPA.Entities;
+package org.licenta2024JPA.Entities.Oferta;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.licenta2024JPA.Entities.Achizitie;
+import org.licenta2024JPA.Entities.Adresa.Judet;
+import org.licenta2024JPA.Entities.Campanie;
 import org.licenta2024JPA.Entities.Linieoferta.Linieoferta;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
 
@@ -13,22 +16,27 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "oferta")
+@NamedQueries({
+        @NamedQuery(name = "Oferta.findByTipreducere", query = "SELECT o FROM Oferta o WHERE o.tipreducere = :tipreducere")
+})
 public class Oferta extends AbstractEntity {
     @Id
     @Column(name = "codoferta", nullable = false)
     private String codoferta;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private String status;
+    private Status status;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipreducere", nullable = false)
-    private String tipreducere;
+    private Tipreducere tipreducere;
 
     @Column(name = "valoarereducere")
     private Double valoarereducere;
 
     @Column(name = "costpuncte")
-    private Integer costpuncte;
+    private Integer costpuncte=0;
 
     @OneToMany(mappedBy = "codoferta")
     private Set<Achizitie> achizitii = new LinkedHashSet<>();

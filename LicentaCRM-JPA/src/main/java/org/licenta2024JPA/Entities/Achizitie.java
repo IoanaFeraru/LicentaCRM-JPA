@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.licenta2024JPA.Entities.Client.Client;
 import org.licenta2024JPA.Entities.Istoricpuncte.Istoricpuncte;
 import org.licenta2024JPA.Entities.Linieachizitie.Linieachizitie;
+import org.licenta2024JPA.Entities.Oferta.Oferta;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
 
 import java.time.LocalDate;

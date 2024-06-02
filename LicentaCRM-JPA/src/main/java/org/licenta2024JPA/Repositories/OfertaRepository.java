@@ -1,6 +1,6 @@
 package org.licenta2024JPA.Repositories;
 
-import org.licenta2024JPA.Entities.Oferta;
+import org.licenta2024JPA.Entities.Oferta.Oferta;
 import org.licenta2024JPA.Metamodels.AbstractRepository;
 
 public class OfertaRepository extends AbstractRepository<Oferta> {

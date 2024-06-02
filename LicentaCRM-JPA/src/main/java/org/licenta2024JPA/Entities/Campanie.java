@@ -3,6 +3,7 @@ package org.licenta2024JPA.Entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.licenta2024JPA.Entities.Oferta.Oferta;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
 
 import java.time.LocalDate;

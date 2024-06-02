@@ -49,6 +49,12 @@ public abstract class AbstractRepository<T> {
         return query.getResultList();
     }
 
+    public List<T> findWithNamedQueryAndParameter(String queryName, String paramName, Object paramValue) {
+        TypedQuery<T> query = getEm().createNamedQuery(queryName, getEntityClass());
+        query.setParameter(paramName, paramValue);
+        return query.getResultList();
+    }
+
     public List<T> findAll() {
         String jpql = "SELECT e FROM " + getEntityClass().getSimpleName() + " e";
         TypedQuery<T> query = getEm().createQuery(jpql, getEntityClass());
