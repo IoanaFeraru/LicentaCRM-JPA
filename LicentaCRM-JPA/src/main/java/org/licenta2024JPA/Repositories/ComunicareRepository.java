@@ -1,6 +1,6 @@
 package org.licenta2024JPA.Repositories;
 
-import org.licenta2024JPA.Entities.Comunicare;
+import org.licenta2024JPA.Entities.Comunicare.Comunicare;
 import org.licenta2024JPA.Metamodels.AbstractRepository;
 
 public class ComunicareRepository extends AbstractRepository<Comunicare> {

@@ -1,9 +1,11 @@
-package org.licenta2024JPA.Entities;
+package org.licenta2024JPA.Entities.Comunicare;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.licenta2024JPA.Entities.Campanie;
 import org.licenta2024JPA.Entities.Client.Client;
+import org.licenta2024JPA.Entities.Segment;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
 
 import java.util.LinkedHashSet;
@@ -23,21 +25,22 @@ public class Comunicare extends AbstractEntity {
     @Column(name = "scop", nullable = false)
     private String scop;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private String status;
+    private StatusComunicare status;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "metoda", nullable = false)
-    private String metoda;
+    private Metoda metoda;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "codsegment", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "codsegment")
     private Segment codsegment;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "codclient", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "codclient")
     private Client codclient;
 
     @OneToMany(mappedBy = "codcomunicare")
     private Set<Campanie> campanies = new LinkedHashSet<>();
-
 }

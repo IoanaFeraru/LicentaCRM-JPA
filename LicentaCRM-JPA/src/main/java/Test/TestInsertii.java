@@ -4,9 +4,6 @@ import Test.Inserari.*;
 
 /*
 ToDO
-        TestInserareLiniiTagClienti
-        TestInserareWishList
-        TestInserareComunicate
         TestInserareCampanii
         TestInserareAchizitii *
         TestInserareLiniiAchiztii *
@@ -25,6 +22,9 @@ public class TestInsertii {
         TestInserareLiniiOferte testInserareLiniiOferte = new TestInserareLiniiOferte();
         TestInserareLiniiTagProduse testInserareLiniiTagProduse = new TestInserareLiniiTagProduse();
         TestInserareSegmente testInserareSegmente = new TestInserareSegmente();
+        TestInserareLiniiTagClienti testInserareLiniiTagClienti = new TestInserareLiniiTagClienti();
+        TestInserareWishList testInserareWishList = new TestInserareWishList();
+        TestInserareComunicate testInserareComunicate = new TestInserareComunicate();
 
         try {
             testInserareTagProduse.insertTags(10);
@@ -35,6 +35,9 @@ public class TestInsertii {
             testInserareLiniiOferte.insertLiniiOferte();
             testInserareLiniiTagProduse.insertLiniiTagProduse();
             testInserareSegmente.insertSegmente(10);
+            testInserareLiniiTagClienti.insertLiniiTagClienti();
+            testInserareWishList.insertWishList();
+            testInserareComunicate.insertComunicate();
         } finally {
             testInserareClienti.closeEm();
             testInserareTagProduse.closeEm();
@@ -44,6 +47,8 @@ public class TestInsertii {
             testInserareLiniiOferte.closeEm();
             testInserareLiniiTagProduse.closeEm();
             testInserareSegmente.closeEm();
+            testInserareLiniiTagClienti.closeEm();
+            testInserareWishList.closeEm();
         }
     }
 }
