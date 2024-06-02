@@ -1,6 +1,7 @@
 package org.licenta2024JPA.Repositories;
 
 import org.licenta2024JPA.Entities.Achizitie;
+import org.licenta2024JPA.Entities.Client.Client;
 import org.licenta2024JPA.Entities.Oferta.Oferta;
 import org.licenta2024JPA.Entities.Oferta.Status;
 import org.licenta2024JPA.Entities.Oferta.Tipreducere;
@@ -68,6 +69,34 @@ public class AchizitieRepository extends AbstractRepository<Achizitie> {
             }else if(oferta.getStatus() == Status.NOTACTIVE){
                 System.out.println("Offer not available anymore");
             }
+
+            commitTransaction();
+        } catch (Exception e) {
+            rollbackTransaction();
+            throw e;
+        }
+    }
+
+    public void calculateAndUpdateValueOfPoints(Achizitie achizitie) {
+        try {
+            beginTransaction();
+
+            // Calculate valueofpoints
+            Integer valueofpoints;
+            if (achizitie.getPlatapuncte() != null) {
+                valueofpoints = achizitie.getTotalSuma().intValue() - achizitie.getPlatapuncte();
+            } else {
+                valueofpoints = achizitie.getTotalSuma().intValue();
+            }
+            achizitie.setValueofpoints(valueofpoints);
+
+            // Update client's puncteloialitate
+            Client client = achizitie.getCodclient();
+            client.setPuncteloialitate(client.getPuncteloialitate() + valueofpoints);
+
+            // Persist changes
+            getEm().merge(client);
+            update(achizitie);
 
             commitTransaction();
         } catch (Exception e) {

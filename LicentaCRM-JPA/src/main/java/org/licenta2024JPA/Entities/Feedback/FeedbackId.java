@@ -33,4 +33,10 @@ public class FeedbackId implements java.io.Serializable {
         return Objects.hash(codclient, codprodus);
     }
 
+    public FeedbackId() {}
+
+    public FeedbackId(String codclient, String codprodus) {
+        this.codclient = codclient;
+        this.codprodus = codprodus;
+    }
 }

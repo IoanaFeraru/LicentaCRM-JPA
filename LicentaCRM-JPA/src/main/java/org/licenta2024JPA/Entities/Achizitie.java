@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.licenta2024JPA.Entities.Client.Client;
-import org.licenta2024JPA.Entities.Istoricpuncte.Istoricpuncte;
 import org.licenta2024JPA.Entities.Linieachizitie.Linieachizitie;
 import org.licenta2024JPA.Entities.Oferta.Oferta;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
@@ -42,11 +41,11 @@ public class Achizitie extends AbstractEntity {
     private Client codclient;
 
     @OneToMany(mappedBy = "codachizitie", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Istoricpuncte> istoricpuncte = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "codachizitie", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Linieachizitie> linieachizitie = new LinkedHashSet<>();
 
     @Column(name = "totalsuma", nullable = false)
     private Double totalSuma;
+
+    @Column(name = "valueofpoints")
+    private Integer valueofpoints;
 }

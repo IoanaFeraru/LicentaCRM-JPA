@@ -8,7 +8,6 @@ import org.licenta2024JPA.Entities.Achizitie;
 import org.licenta2024JPA.Entities.Adresa.Adresa;
 import org.licenta2024JPA.Entities.Comunicare.Comunicare;
 import org.licenta2024JPA.Entities.Feedback.Feedback;
-import org.licenta2024JPA.Entities.Istoricpuncte.Istoricpuncte;
 import org.licenta2024JPA.Entities.Linietagclienti.Linietagclienti;
 import org.licenta2024JPA.Entities.Wishlist.Wishlist;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
@@ -64,9 +63,6 @@ public class Client extends AbstractEntity {
 
     @OneToMany(mappedBy = "codclient")
     private Set<Feedback> feedbacks = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "codclient")
-    private Set<Istoricpuncte> istoricuripuncte = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "codclient")
     private Set<Linietagclienti> linietagclienti = new LinkedHashSet<>();

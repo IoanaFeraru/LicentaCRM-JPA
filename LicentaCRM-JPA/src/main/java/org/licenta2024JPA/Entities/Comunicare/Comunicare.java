@@ -42,5 +42,5 @@ public class Comunicare extends AbstractEntity {
     private Client codclient;
 
     @OneToMany(mappedBy = "codcomunicare")
-    private Set<Campanie> campanies = new LinkedHashSet<>();
+    private Set<Campanie> campanii = new LinkedHashSet<>();
 }

@@ -38,7 +38,7 @@ public class Produs extends AbstractEntity {
     private Set<Feedback> feedbacks = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "codprodus")
-    private Set<Linieachizitie> linieachizities = new LinkedHashSet<>();
+    private Set<Linieachizitie> liniiachizitii = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "codprodus")
     private Set<Linieoferta> liniioferte = new LinkedHashSet<>();

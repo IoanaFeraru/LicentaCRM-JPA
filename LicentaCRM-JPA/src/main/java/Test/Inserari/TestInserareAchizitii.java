@@ -8,7 +8,6 @@ import org.licenta2024JPA.Entities.Oferta.Oferta;
 import org.licenta2024JPA.Entities.Produs;
 import org.licenta2024JPA.Repositories.AchizitieRepository;
 import org.licenta2024JPA.Repositories.ClientRepository;
-import org.licenta2024JPA.Repositories.IstoricpuncteRepository;
 import org.licenta2024JPA.Repositories.LinieachizitieRepository;
 import org.licenta2024JPA.Repositories.OfertaRepository;
 import org.licenta2024JPA.Repositories.ProdusRepository;
@@ -19,6 +18,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+//Includes Achizitii & LiniiAchizitie
 public class TestInserareAchizitii {
 
     private AchizitieRepository achizitieRepository;
@@ -26,7 +26,6 @@ public class TestInserareAchizitii {
     private LinieachizitieRepository linieachizitieRepository;
     private OfertaRepository ofertaRepository;
     private ProdusRepository produsRepository;
-    private IstoricpuncteRepository istoricpuncteRepository;
 
     public TestInserareAchizitii() {
         this.achizitieRepository = new AchizitieRepository();
@@ -34,7 +33,6 @@ public class TestInserareAchizitii {
         this.linieachizitieRepository = new LinieachizitieRepository();
         this.ofertaRepository = new OfertaRepository();
         this.produsRepository = new ProdusRepository();
-        this.istoricpuncteRepository = new IstoricpuncteRepository();
     }
 
     public void insertAchizitii() {
@@ -46,7 +44,6 @@ public class TestInserareAchizitii {
             for (Client client : clients) {
                 int numberOfAchizitii = new Random().nextInt(10) + 1;
                 for (int i = 0; i < numberOfAchizitii; i++) {
-                    achizitieRepository.beginTransaction();
                     Achizitie achizitie = new Achizitie();
                     achizitie.setCodclient(client);
                     achizitie.setDataachizitie(LocalDate.now());
@@ -62,8 +59,7 @@ public class TestInserareAchizitii {
                         }
                     }
 
-                    achizitieRepository.create(achizitie);
-                    achizitieRepository.commitTransaction();
+                    achizitieRepository.addAchizitie(achizitie);
 
                     Set<LinieachizitieId> existingIds = new HashSet<>();
                     int numberOfProduse = new Random().nextInt(10) + 1;
@@ -90,13 +86,13 @@ public class TestInserareAchizitii {
                     if (achizitie.getCodoferta() != null) {
                         achizitieRepository.applyVoucherDiscount(achizitie);
                     }
+
+                    achizitieRepository.calculateAndUpdateValueOfPoints(achizitie);
                 }
             }
         } catch (Exception e) {
             achizitieRepository.rollbackTransaction();
             throw e;
-        } finally {
-            achizitieRepository.closeEntityManager();
         }
     }
 

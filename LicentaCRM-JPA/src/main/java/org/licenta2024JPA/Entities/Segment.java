@@ -31,7 +31,7 @@ public class Segment extends AbstractEntity {
     private String criterii;
 
     @OneToMany(mappedBy = "codsegment")
-    private Set<Comunicare> comunicares = new LinkedHashSet<>();
+    private Set<Comunicare> comunicari = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "codsegment")
     private Set<Linietagclienti> linietagclienti = new LinkedHashSet<>();

@@ -24,7 +24,7 @@ public class Tagproduse extends AbstractEntity {
     private String element;
 
     @OneToMany(mappedBy = "codtag")
-    private Set<Linietagproduse> linietagproduses = new LinkedHashSet<>();
+    private Set<Linietagproduse> liniitaguriproduse = new LinkedHashSet<>();
 
     @Override
     public Object getId() {
