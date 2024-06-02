@@ -3,8 +3,7 @@ package Test;
 import Test.Inserari.*;
 
 /*
-ToDO    TestInserareLiniiTagProduse
-        TestInserareSegmente
+ToDO
         TestInserareLiniiTagClienti
         TestInserareWishList
         TestInserareComunicate
@@ -13,7 +12,7 @@ ToDO    TestInserareLiniiTagProduse
         TestInserareLiniiAchiztii *
         TestInserareIstoricPuncte *
         TestInserareFeedback + repoFeedback onlyIfBought
- */
+*/
 
 public class TestInsertii {
 
@@ -24,6 +23,8 @@ public class TestInsertii {
         TestInserareProduse testInserareProduse = new TestInserareProduse();
         TestInserareOferte testInserareOferte = new TestInserareOferte();
         TestInserareLiniiOferte testInserareLiniiOferte = new TestInserareLiniiOferte();
+        TestInserareLiniiTagProduse testInserareLiniiTagProduse = new TestInserareLiniiTagProduse();
+        TestInserareSegmente testInserareSegmente = new TestInserareSegmente();
 
         try {
             testInserareTagProduse.insertTags(10);
@@ -32,6 +33,8 @@ public class TestInsertii {
             testInserareProduse.insertProduse(10);
             testInserareOferte.insertOferte(5);
             testInserareLiniiOferte.insertLiniiOferte();
+            testInserareLiniiTagProduse.insertLiniiTagProduse();
+            testInserareSegmente.insertSegmente(10);
         } finally {
             testInserareClienti.closeEm();
             testInserareTagProduse.closeEm();
@@ -39,6 +42,8 @@ public class TestInsertii {
             testInserareProduse.closeEm();
             testInserareOferte.closeEm();
             testInserareLiniiOferte.closeEm();
+            testInserareLiniiTagProduse.closeEm();
+            testInserareSegmente.closeEm();
         }
     }
 }
