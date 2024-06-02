@@ -11,20 +11,23 @@ public class TestInserareTagProduse {
         this.tagproduseRepository = new TagproduseRepository();
     }
 
-    public void insertTags() {
-        for (int i = 1; i <= 500; i++) {
-            Tagproduse tagproduse = new Tagproduse();
-            tagproduse.setElement("Tag" + i);
-
-            try {
-                tagproduseRepository.addTagproduse(tagproduse);
+    public void insertTags(int numberOfTags) {
+        tagproduseRepository.beginTransaction();
+        try {
+            for (int i = 1; i <= numberOfTags; i++) {
+                Tagproduse tagproduse = new Tagproduse();
+                tagproduse.setElement("Tag" + i);
+                tagproduseRepository.create(tagproduse);
                 System.out.println("Inserted Tag: " + tagproduse.getElement());
-            } catch (Exception e) {
-                System.err.println("Error inserting Tag: " + tagproduse.getElement());
-                e.printStackTrace();
             }
+            tagproduseRepository.commitTransaction();
+        } catch (Exception e) {
+            tagproduseRepository.rollbackTransaction();
+            throw e;
         }
-        // Closing the EntityManager to release resources
-        tagproduseRepository.getEm().close();
+    }
+
+    public void closeEm(){
+        tagproduseRepository.closeEntityManager();
     }
 }

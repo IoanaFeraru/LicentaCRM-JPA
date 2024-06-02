@@ -14,7 +14,6 @@ import java.time.Instant;
 @Entity
 @Table(name = "wishlist")
 public class Wishlist extends AbstractEntity {
-    @SequenceGenerator(name = "wishlist_id_gen", sequenceName = "tagproduse_codtag_seq", allocationSize = 1)
     @EmbeddedId
     private WishlistId id;
 

@@ -12,7 +12,6 @@ import org.licenta2024JPA.Metamodels.AbstractEntity;
 @Entity
 @Table(name = "feedback")
 public class Feedback extends AbstractEntity {
-    @SequenceGenerator(name = "feedback_id_gen", sequenceName = "comunicare_codcomunicare_seq", allocationSize = 1)
     @EmbeddedId
     private FeedbackId id;
 

@@ -15,7 +15,6 @@ import java.util.Set;
 @Table(name = "oferta")
 public class Oferta extends AbstractEntity {
     @Id
-    @SequenceGenerator(name = "oferta_id_gen", sequenceName = "oferta_codoferta_seq", allocationSize = 1)
     @Column(name = "codoferta", nullable = false)
     private String codoferta;
 

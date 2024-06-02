@@ -15,7 +15,7 @@ public class Adresa extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adresa_id_gen")
     @SequenceGenerator(name = "adresa_id_gen", sequenceName = "adresa_codadresa_seq", allocationSize = 1)
     @Column(name = "codadresa", nullable = false)
-    private String codadresa;
+    private Integer codadresa;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "codclient", nullable = false)

@@ -1,12 +1,11 @@
 package org.licenta2024JPA.Metamodels;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public abstract class AbstractRepository<T> {
-    private static final EntityManager em = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
+    private static jakarta.persistence.EntityManager em = jakarta.persistence.Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
 
     public void beginTransaction() {
         getEm().getTransaction().begin();
@@ -68,6 +67,10 @@ public abstract class AbstractRepository<T> {
 
     public EntityManager getEm() {
         return em;
+    }
+
+    public void setEm(EntityManager em) {
+        AbstractRepository.em = em;
     }
 
     public void closeEntityManager() {

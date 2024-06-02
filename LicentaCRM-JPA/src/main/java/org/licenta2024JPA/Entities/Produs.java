@@ -19,7 +19,6 @@ import java.util.Set;
 @Table(name = "produs")
 public class Produs extends AbstractEntity {
     @Id
-    @SequenceGenerator(name = "produs_id_gen", sequenceName = "produs_codprodus_seq", allocationSize = 1)
     @Column(name = "codprodus", nullable = false)
     private String codprodus;
 

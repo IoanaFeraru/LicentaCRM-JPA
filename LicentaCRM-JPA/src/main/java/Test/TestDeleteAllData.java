@@ -1,8 +1,10 @@
 package Test;
 
+import jakarta.persistence.Query;
 import org.licenta2024JPA.Metamodels.AbstractRepository;
 import org.licenta2024JPA.Repositories.*;
 import java.util.List;
+import jakarta.persistence.EntityManager;
 
 public class TestDeleteAllData {
     public static void main(String[] args) {
@@ -41,6 +43,17 @@ public class TestDeleteAllData {
             deleteAllEntries(tagproduseRepo);
             deleteAllEntries(produsRepo);
             deleteAllEntries(clientRepo);
+
+            resetAllSequences(
+                    achizitieRepo.getEm(),
+                    "achizitie_codachizitie_seq",
+                    "adresa_codadresa_seq",
+                    "campanie_codcampanie_seq",
+                    "comunicare_codcomunicare_seq",
+                    "segment_codsegment_seq",
+                    "tagproduse_codtag_seq"
+            );
+
         } finally {
             // Close all EntityManagers
             closeAllEntityManagers(
@@ -64,6 +77,20 @@ public class TestDeleteAllData {
                 repository.rollbackTransaction();
                 e.printStackTrace();
             }
+        }
+    }
+
+    private static void resetAllSequences(EntityManager em, String... sequences) {
+        em.getTransaction().begin();
+        try {
+            for (String sequence : sequences) {
+                Query query = em.createNativeQuery("ALTER SEQUENCE " + sequence + " RESTART WITH 1");
+                query.executeUpdate();
+            }
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
         }
     }
 

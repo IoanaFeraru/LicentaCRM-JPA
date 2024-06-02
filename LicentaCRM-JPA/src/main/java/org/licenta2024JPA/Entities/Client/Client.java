@@ -25,8 +25,6 @@ import java.util.Set;
 @Table(name = "client")
 public class Client extends AbstractEntity {
     @Id
-    @SequenceGenerator(name = "client_id_gen", sequenceName = "campanie_codcampanie_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_id_gen")
     @Column(name = "codclient", nullable = false)
     private String codclient;
 
