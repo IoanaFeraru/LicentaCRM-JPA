@@ -55,14 +55,6 @@ public abstract class AbstractRepository<T> {
         return query.getResultList();
     }
 
-    public List<T> findWithDynamicQuery(String jpql, Object... params) {
-        TypedQuery<T> query = getEm().createQuery(jpql, getEntityClass());
-        for (int i = 0; i < params.length; i++) {
-            query.setParameter(i + 1, params[i]);
-        }
-        return query.getResultList();
-    }
-
     protected abstract Class<T> getEntityClass();
 
     public EntityManager getEm() {
