@@ -1,7 +1,10 @@
 package org.licenta2024JPA.Repositories;
 
 import org.licenta2024JPA.Entities.Oferta.Oferta;
+import org.licenta2024JPA.Entities.Oferta.Tipreducere;
 import org.licenta2024JPA.Metamodels.AbstractRepository;
+
+import java.util.List;
 
 public class OfertaRepository extends AbstractRepository<Oferta> {
     @Override
@@ -44,5 +47,11 @@ public class OfertaRepository extends AbstractRepository<Oferta> {
             rollbackTransaction();
             throw e;
         }
+    }
+
+    public List<Oferta> findByTipreducere(Tipreducere tipreducere) {
+        return getEm().createNamedQuery("Oferta.findByTipreducere", Oferta.class)
+                .setParameter("tipreducere", tipreducere)
+                .getResultList();
     }
 }

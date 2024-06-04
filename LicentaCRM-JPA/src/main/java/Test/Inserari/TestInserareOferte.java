@@ -3,17 +3,22 @@ package Test.Inserari;
 import org.licenta2024JPA.Entities.Oferta.Oferta;
 import org.licenta2024JPA.Entities.Oferta.Status;
 import org.licenta2024JPA.Entities.Oferta.Tipreducere;
+import org.licenta2024JPA.Entities.Produs;
 import org.licenta2024JPA.Repositories.OfertaRepository;
+import org.licenta2024JPA.Repositories.ProdusRepository;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 import java.util.Random;
 
 public class TestInserareOferte {
     private OfertaRepository ofertaRepository;
+    private ProdusRepository produsRepository;
 
     public TestInserareOferte() {
         this.ofertaRepository = new OfertaRepository();
+        this.produsRepository = new ProdusRepository();
     }
 
     public void insertOferte(int numberPerTypeOfOffers) {
@@ -22,12 +27,15 @@ public class TestInserareOferte {
             for (int i = 0; i < numberPerTypeOfOffers; i++) {
                 int buyable = new Random().nextInt(2); //if 1 then it will be buyable by customers
 
-                Oferta ofertaP = new Oferta(); //Product list offer
+                Produs randomProdus = selectRandomProdus();
+
+                Oferta ofertaP = new Oferta();
                 ofertaP.setCodoferta("OfertaProdus" + i);
                 ofertaP.setStatus(Status.values()[new Random().nextInt(Status.values().length)]);
                 ofertaP.setTipreducere(Tipreducere.PRODUS);
                 ofertaP.setValoarereducere(1.0);
-                ofertaP.setCostpuncte(new Random().nextInt(500)); //Products offers always buyable
+                ofertaP.setCostpuncte(generateRandomIntWithStep(100, 600, 20));
+                ofertaP.setCodprodus(randomProdus);
 
                 Oferta ofertaV = new Oferta();
                 ofertaV.setCodoferta("OfertaVoucher" + i);
@@ -44,7 +52,7 @@ public class TestInserareOferte {
                 ofertaPr.setValoarereducere(valoarereducere);
 
                 if (buyable == 1) {
-                    //sets the cost of all offers buyable with points in the 100-600 range with a 20point step
+                    // Sets the cost of all offers buyable with points in the 100-600 range with a 20-point step
                     ofertaV.setCostpuncte(generateRandomIntWithStep(100, 600, 20));
                     ofertaPr.setCostpuncte(generateRandomIntWithStep(100, 600, 20));
                 }
@@ -60,6 +68,14 @@ public class TestInserareOferte {
             ofertaRepository.rollbackTransaction();
             throw e;
         }
+    }
+
+    private Produs selectRandomProdus() {
+        List<Produs> allProducts = produsRepository.findAll();
+        if (allProducts.isEmpty()) {
+            throw new IllegalStateException("No products available in the database.");
+        }
+        return allProducts.get(new Random().nextInt(allProducts.size()));
     }
 
     private int generateRandomIntWithStep(int min, int max, int step) {

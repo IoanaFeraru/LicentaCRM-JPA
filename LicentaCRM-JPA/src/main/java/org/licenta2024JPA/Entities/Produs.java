@@ -7,7 +7,6 @@ import org.licenta2024JPA.Entities.Feedback.Feedback;
 import org.licenta2024JPA.Entities.Linieachizitie.Linieachizitie;
 import org.licenta2024JPA.Entities.Linietagproduse.Linietagproduse;
 import org.licenta2024JPA.Entities.Wishlist.Wishlist;
-import org.licenta2024JPA.Entities.Linieoferta.Linieoferta;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
 
 import java.util.LinkedHashSet;
@@ -39,9 +38,6 @@ public class Produs extends AbstractEntity {
 
     @OneToMany(mappedBy = "codprodus")
     private Set<Linieachizitie> liniiachizitii = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "codprodus")
-    private Set<Linieoferta> liniioferte = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "codprodus")
     private Set<Linietagproduse> linietagproduse = new LinkedHashSet<>();

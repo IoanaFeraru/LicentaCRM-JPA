@@ -10,7 +10,6 @@ public class TestInsertii {
         TestInserareAdrese testInserareAdrese = new TestInserareAdrese();
         TestInserareProduse testInserareProduse = new TestInserareProduse();
         TestInserareOferte testInserareOferte = new TestInserareOferte();
-        TestInserareLiniiOferte testInserareLiniiOferte = new TestInserareLiniiOferte();
         TestInserareLiniiTagProduse testInserareLiniiTagProduse = new TestInserareLiniiTagProduse();
         TestInserareSegmente testInserareSegmente = new TestInserareSegmente();
         TestInserareLiniiTagClienti testInserareLiniiTagClienti = new TestInserareLiniiTagClienti();
@@ -26,7 +25,6 @@ public class TestInsertii {
             testInserareAdrese.insertAdreseForClients();
             testInserareProduse.insertProduse(10);
             testInserareOferte.insertOferte(5);
-            testInserareLiniiOferte.insertLiniiOferte();
             testInserareLiniiTagProduse.insertLiniiTagProduse();
             testInserareSegmente.insertSegmente(10);
             testInserareLiniiTagClienti.insertLiniiTagClienti();
@@ -41,7 +39,6 @@ public class TestInsertii {
             testInserareAdrese.closeEm();
             testInserareProduse.closeEm();
             testInserareOferte.closeEm();
-            testInserareLiniiOferte.closeEm();
             testInserareLiniiTagProduse.closeEm();
             testInserareSegmente.closeEm();
             testInserareLiniiTagClienti.closeEm();

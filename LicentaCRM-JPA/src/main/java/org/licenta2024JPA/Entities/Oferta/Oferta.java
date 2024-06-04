@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.licenta2024JPA.Entities.Achizitie;
 import org.licenta2024JPA.Entities.Campanie.Campanie;
-import org.licenta2024JPA.Entities.Linieoferta.Linieoferta;
+import org.licenta2024JPA.Entities.Produs;
 import org.licenta2024JPA.Metamodels.AbstractEntity;
 
 import java.util.LinkedHashSet;
@@ -43,8 +43,9 @@ public class Oferta extends AbstractEntity {
     @OneToMany(mappedBy = "codoferta")
     private Set<Campanie> campanies = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "codoferta")
-    private Set<Linieoferta> liniioferta = new LinkedHashSet<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "codprodus")
+    private Produs codprodus;
 
     @Override
     public Object getId() {

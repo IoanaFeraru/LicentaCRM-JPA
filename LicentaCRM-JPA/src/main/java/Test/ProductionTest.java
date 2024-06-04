@@ -1,14 +1,13 @@
 package Test;
 
 import Test.Inserari.*;
-import Test.Inserari.*;
 
 public class ProductionTest {
     public static void main(String[] args) {
-        TestInserareSegmente t = new TestInserareSegmente();
+        TestInserareFeedbackuri t = new TestInserareFeedbackuri();
 
         try {
-            t.insertSegmente(10);
+            t.insertFeedbackuri(5);
         } finally {
             t.closeEm();
         }

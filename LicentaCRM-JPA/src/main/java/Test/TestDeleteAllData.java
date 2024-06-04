@@ -16,7 +16,6 @@ public class TestDeleteAllData {
         ComunicareRepository comunicareRepo = new ComunicareRepository();
         FeedbackRepository feedbackRepo = new FeedbackRepository();
         LinieachizitieRepository linieachizitieRepo = new LinieachizitieRepository();
-        LinieofertaRepository linieofertaRepo = new LinieofertaRepository();
         LinietagclientiRepository linietagclientiRepo = new LinietagclientiRepository();
         LinietagproduseRepository linietagproduseRepo = new LinietagproduseRepository();
         OfertaRepository ofertaRepo = new OfertaRepository();
@@ -29,7 +28,6 @@ public class TestDeleteAllData {
             deleteAllEntries(linietagclientiRepo);
             deleteAllEntries(linietagproduseRepo);
             deleteAllEntries(linieachizitieRepo);
-            deleteAllEntries(linieofertaRepo);
             deleteAllEntries(feedbackRepo);
             deleteAllEntries(wishlistRepo);
             deleteAllEntries(achizitieRepo);
@@ -57,7 +55,7 @@ public class TestDeleteAllData {
             closeAllEntityManagers(
                     achizitieRepo, adresaRepo, campanieRepo, clientRepo,
                     comunicareRepo, feedbackRepo, linieachizitieRepo,
-                    linieofertaRepo, linietagclientiRepo, linietagproduseRepo,
+                    linietagclientiRepo, linietagproduseRepo,
                     ofertaRepo, produsRepo, segmentRepo, tagproduseRepo, wishlistRepo
             );
         }
