@@ -8,7 +8,6 @@ import jakarta.persistence.EntityManager;
 
 public class TestDeleteAllData {
     public static void main(String[] args) {
-        // Initialize repositories
         AchizitieRepository achizitieRepo = new AchizitieRepository();
         AdresaRepository adresaRepo = new AdresaRepository();
         CampanieRepository campanieRepo = new CampanieRepository();
@@ -51,7 +50,6 @@ public class TestDeleteAllData {
             );
 
         } finally {
-            // Close all EntityManagers
             closeAllEntityManagers(
                     achizitieRepo, adresaRepo, campanieRepo, clientRepo,
                     comunicareRepo, feedbackRepo, linieachizitieRepo,

@@ -25,7 +25,7 @@ public class TestInserareOferte {
         ofertaRepository.beginTransaction();
         try {
             for (int i = 0; i < numberPerTypeOfOffers; i++) {
-                int buyable = new Random().nextInt(2); //if 1 then it will be buyable by customers
+                int buyable = new Random().nextInt(2);
 
                 Produs randomProdus = selectRandomProdus();
 
@@ -52,7 +52,6 @@ public class TestInserareOferte {
                 ofertaPr.setValoarereducere(valoarereducere);
 
                 if (buyable == 1) {
-                    // Sets the cost of all offers buyable with points in the 100-600 range with a 20-point step
                     ofertaV.setCostpuncte(generateRandomIntWithStep(100, 600, 20));
                     ofertaPr.setCostpuncte(generateRandomIntWithStep(100, 600, 20));
                 }

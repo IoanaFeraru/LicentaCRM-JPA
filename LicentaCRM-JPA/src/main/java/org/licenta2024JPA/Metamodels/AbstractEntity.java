@@ -11,12 +11,6 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class AbstractEntity {
 
-    @Column(name = "created_by_user")
-    private String createdByUser;
-
-    @Column(name = "updated_by_user")
-    private String updatedByUser;
-
     @Column(name = "date_created", nullable = false)
     private LocalDateTime dateCreated = LocalDateTime.now();
 

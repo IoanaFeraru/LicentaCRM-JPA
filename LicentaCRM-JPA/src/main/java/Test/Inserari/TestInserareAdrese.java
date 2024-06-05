@@ -23,15 +23,15 @@ public class TestInserareAdrese {
         List<Client> clients = clientRepository.findAll();
 
         for (Client client : clients) {
-            int numberOfAdrese = new Random().nextInt(3) + 1; // Random number between 1 and 3
+            int numberOfAdrese = new Random().nextInt(3) + 1;
 
             for (int i = 1; i <= numberOfAdrese; i++) {
                 adresaRepository.beginTransaction();
 
                 Adresa adresa = new Adresa();
                 adresa.setCodclient(client);
-                adresa.setJudet(Judet.values()[new Random().nextInt(Judet.values().length)]); // Random Judet
-                adresa.setCodpostal(new Random().nextInt(899999) + 100000); // Random postal code between 100000 and 999999
+                adresa.setJudet(Judet.values()[new Random().nextInt(Judet.values().length)]);
+                adresa.setCodpostal(new Random().nextInt(899999) + 100000);
                 adresa.setStrada("Strada " + i);
                 adresa.setBloc("Bloc " + i);
 

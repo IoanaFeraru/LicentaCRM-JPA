@@ -54,7 +54,7 @@ public class TestInserareComunicate {
     private void insertPersonalComunications() {
         List<Client> clients = clientRepository.findAll();
         Random random = new Random();
-        int numberOfClients = random.nextInt(clients.size()) + 1; // Random number of clients
+        int numberOfClients = random.nextInt(clients.size()) + 1;
 
         comunicareRepository.beginTransaction();
         try {

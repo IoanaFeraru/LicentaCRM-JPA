@@ -41,7 +41,7 @@ public class Oferta extends AbstractEntity {
     private Set<Achizitie> achizitii = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "codoferta")
-    private Set<Campanie> campanies = new LinkedHashSet<>();
+    private Set<Campanie> campanii = new LinkedHashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "codprodus")

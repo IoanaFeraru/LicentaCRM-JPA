@@ -32,7 +32,7 @@ public class TestInserareWishList {
         try {
             Random random = new Random();
             for (Client client : clients) {
-                int numberOfWishListItems = random.nextInt(5) + 1; // Up to 5 random products
+                int numberOfWishListItems = random.nextInt(5) + 1;
                 for (int j = 0; j < numberOfWishListItems; j++) {
                     Produs product = products.get(random.nextInt(products.size()));
 

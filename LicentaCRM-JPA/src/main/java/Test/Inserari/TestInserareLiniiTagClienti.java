@@ -31,7 +31,7 @@ public class TestInserareLiniiTagClienti {
         try {
             Random random = new Random();
             for (Client client : clients) {
-                int numberOfTags = random.nextInt(5) + 1; // Up to 5 random segments
+                int numberOfTags = random.nextInt(5) + 1;
                 for (int j = 0; j < numberOfTags; j++) {
                     Segment segment = segments.get(random.nextInt(segments.size()));
 

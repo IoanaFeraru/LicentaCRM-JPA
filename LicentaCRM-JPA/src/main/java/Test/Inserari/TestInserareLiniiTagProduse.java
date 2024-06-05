@@ -41,11 +41,10 @@ public class TestInserareLiniiTagProduse {
                     linietagproduseId.setCodprodus(produs.getCodprodus());
                     linietagproduseId.setCodtag((Integer) tag.getId());
 
-                    // Check if the Linietagproduse already exists
                     Linietagproduse existingLinietagproduse = linietagproduseRepository.findById(linietagproduseId);
                     if (existingLinietagproduse != null) {
                         System.out.println("Linietagproduse already exists: " + linietagproduseId);
-                        continue; // Skip this iteration if the entry already exists
+                        continue;
                     }
 
                     Linietagproduse linietagproduse = new Linietagproduse();

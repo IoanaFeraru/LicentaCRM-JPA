@@ -61,7 +61,7 @@ public class AchizitieRepository extends AbstractRepository<Achizitie> {
                 Double totalSuma = achizitie.getTotalSuma();
                 Double valoarereducere = oferta.getValoarereducere();
 
-                // Apply voucher discount to the total suma
+                // Apply voucher discount to the totalSuma
                 totalSuma = Math.max(0, totalSuma - valoarereducere);
                 achizitie.setTotalSuma(totalSuma);
 
@@ -93,8 +93,6 @@ public class AchizitieRepository extends AbstractRepository<Achizitie> {
             // Update client's puncteloialitate
             Client client = achizitie.getCodclient();
             client.setPuncteloialitate(client.getPuncteloialitate() + valueofpoints);
-
-            // Persist changes
             getEm().merge(client);
             update(achizitie);
 

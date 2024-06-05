@@ -59,7 +59,7 @@ public class Client extends AbstractEntity {
     private Set<Adresa> adrese = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "codclient")
-    private Set<Comunicare> comnunicari = new LinkedHashSet<>();
+    private Set<Comunicare> comunicari = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "codclient")
     private Set<Feedback> feedbacks = new LinkedHashSet<>();

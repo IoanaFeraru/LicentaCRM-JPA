@@ -50,7 +50,6 @@ public class TestInserareAchizitii {
                     achizitie.setStatus("NEW");
                     achizitie.setTotalSuma(0.0);
 
-                    // Randomly assign an offer to the achizitie
                     if (!oferte.isEmpty() && new Random().nextBoolean()) {
                         Oferta oferta = oferte.get(new Random().nextInt(oferte.size()));
                         achizitie.setCodoferta(oferta);
@@ -82,7 +81,6 @@ public class TestInserareAchizitii {
                         linieachizitieRepository.addLinieachizitie(linieachizitie);
                     }
 
-                    // Apply voucher discount if applicable
                     if (achizitie.getCodoferta() != null) {
                         achizitieRepository.applyVoucherDiscount(achizitie);
                     }
