@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Console appender configuration -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Set the root logger level to WARN -->
+    <root level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <!-- Hibernate logging configuration -->
+    <logger name="org.hibernate" level="ERROR"/>
+    <logger name="org.hibernate.SQL" level="ERROR"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="ERROR"/>
+    <logger name="org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator" level="ERROR"/>
+    <logger name="org.hibernate.engine.jdbc.spi.SqlExceptionHelper" level="ERROR"/>
+    <logger name="org.hibernate.transaction" level="ERROR"/>
+    <logger name="org.hibernate.resource.transaction" level="ERROR"/>
+
+</configuration>
