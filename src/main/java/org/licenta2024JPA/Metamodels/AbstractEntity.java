@@ -18,14 +18,10 @@ public abstract class AbstractEntity {
     private LocalDateTime dateUpdated = LocalDateTime.now();
 
     @PrePersist
-    protected void onCreate() {
-        dateCreated = dateUpdated = LocalDateTime.now();
-    }
+    protected void onCreate() { dateCreated = dateUpdated = LocalDateTime.now();}
 
     @PreUpdate
-    protected void onUpdate() {
-        dateUpdated = LocalDateTime.now();
-    }
+    protected void onUpdate() {dateUpdated = LocalDateTime.now();}
 
     public abstract Object getId();
 
@@ -38,7 +34,5 @@ public abstract class AbstractEntity {
     }
 
     @Override
-    public int hashCode() {
-        return getId() != null ? getId().hashCode() : super.hashCode();
-    }
+    public int hashCode() {return getId() != null ? getId().hashCode() : super.hashCode();}
 }
